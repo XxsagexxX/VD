@@ -1,0 +1,166 @@
+:root {
+  --bg: #d8c9f4;
+  --ink: #3e2e4d;
+  --panel: #efe7ff;
+  --grid-line: #4d3c63;
+  --cell: #fffaf6;
+  --correct: #ffd1ea;
+  --accent: #ea78af;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+  color: var(--ink);
+  background: var(--bg);
+}
+
+.page {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 1.2rem 1.2rem 2rem;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(2rem, 4.6vw, 3rem);
+}
+
+header p {
+  margin: 0.2rem 0 0;
+  font-size: 1.1rem;
+}
+
+.crossword-stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.crossword-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.42);
+  border: 3px solid #ffffff;
+  border-radius: 24px;
+  padding: 1.5rem;
+  box-shadow: 0 16px 34px rgba(44, 20, 74, 0.2);
+}
+
+.corner {
+  position: absolute;
+  width: 78px;
+  height: 78px;
+  filter: drop-shadow(0 3px 2px rgba(0, 0, 0, 0.12));
+}
+
+.corner-tl { top: -30px; left: -28px; }
+.corner-tr { top: -30px; right: -28px; transform: scaleX(-1); }
+.corner-bl { bottom: -30px; left: -28px; transform: scaleY(-1); }
+.corner-br { bottom: -30px; right: -28px; transform: scale(-1, -1); }
+
+.crossword {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(46px, 58px));
+  gap: 3px;
+  background: var(--grid-line);
+  padding: 8px;
+  border-radius: 14px;
+  justify-content: center;
+}
+
+.cell-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+}
+
+.cell-wrap .cell {
+  width: 100%;
+  height: 100%;
+}
+
+.cell {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  border: none;
+  text-align: center;
+  font-size: 1.45rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: var(--ink);
+  background: var(--cell);
+}
+
+.cell.block { background: #31263f; }
+
+.cell-num {
+  position: absolute;
+  top: 2px;
+  left: 4px;
+  font-size: 0.58rem;
+  color: #6f598a;
+}
+
+.cell.correct { background: var(--correct); }
+
+.clues {
+  width: min(100%, 780px);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  background: var(--panel);
+  border-radius: 16px;
+  padding: 1rem;
+  border: 2px solid #fff;
+}
+
+.clues h2 {
+  margin: 0 0 0.5rem;
+  color: #8e3f78;
+}
+
+ol { margin: 0; padding-left: 1.2rem; }
+li { margin-bottom: 0.35rem; }
+
+dialog {
+  border: none;
+  border-radius: 16px;
+  max-width: 440px;
+  text-align: center;
+  padding: 1.2rem;
+  background: linear-gradient(145deg, #fff5c7, #ffdff0);
+}
+
+#close-modal {
+  border: none;
+  background: var(--accent);
+  color: white;
+  padding: 0.6rem 1rem;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+@media (max-width: 860px) {
+  .crossword {
+    grid-template-columns: repeat(12, minmax(22px, 1fr));
+  }
+
+  .clues {
+    grid-template-columns: 1fr;
+  }
+
+  .corner {
+    width: 60px;
+    height: 60px;
+  }
+}

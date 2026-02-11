@@ -54,6 +54,19 @@ const modal = document.getElementById('win-modal');
 const closeBtn = document.getElementById('close-modal');
 const inputMap = new Map();
 
+function getNextCellCoords(row, col) {
+  for (let r = row; r < size.rows; r++) {
+    const startCol = r === row ? col + 1 : 0;
+    for (let c = startCol; c < size.cols; c++) {
+      if (grid[r][c]) {
+        return { row: r, col: c };
+      }
+    }
+  }
+
+  return null;
+}
+
 for (let r = 0; r < size.rows; r++) {
   for (let c = 0; c < size.cols; c++) {
     const cellData = grid[r][c];
@@ -87,6 +100,14 @@ for (let r = 0; r < size.rows; r++) {
 
     input.addEventListener('input', () => {
       input.value = input.value.toUpperCase().replace(/[^A-Z]/g, '');
+
+      if (input.value === cellData.letter) {
+        const next = getNextCellCoords(r, c);
+        if (next) {
+          inputMap.get(`${next.row},${next.col}`)?.focus();
+        }
+      }
+
       validateGrid();
     });
 
@@ -128,3 +149,4 @@ function validateGrid() {
 }
 
 closeBtn.addEventListener('click', () => modal.close());
+

@@ -13,7 +13,33 @@
       <p>can he complete it? :3</p>
     </header>
 
-    <section class="crossword-stage">
+    <section id="painter-stage" class="game-stage">
+      <h2>Mini Game 2: Help Artist Cat Paint 🌸</h2>
+      <p id="paint-instruction" class="instruction">Step 1: Pick up the pencil so kitty can sketch the flower.</p>
+
+      <div class="studio-wrap">
+        <div class="cat-side">
+          <img class="cat-avatar" src="cat-corner.svg" alt="artist cat" />
+          <div id="cat-mood" class="cat-mood">Focused artist mode 🎨</div>
+          <div class="toolbox">
+            <button id="tool-pencil" class="tool-btn">✏️ Give Pencil</button>
+            <button id="tool-purple" class="tool-btn" disabled>🖌️ Dip in Purple</button>
+            <button id="tool-green" class="tool-btn" disabled>🖌️ Dip in Green</button>
+            <button id="tool-wash" class="tool-btn" disabled>🫧 Wash Brush</button>
+            <button id="tool-outline" class="tool-btn" disabled>✨ Finish Outline</button>
+          </div>
+        </div>
+
+        <div class="easel" id="easel">
+          <div class="easel-top"></div>
+          <canvas id="paint-canvas" width="420" height="320" aria-label="cat painting canvas"></canvas>
+          <div class="easel-legs"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="crossword-stage" class="crossword-stage hidden">
+      <h2>now u gotta solve da custom crossword hmp</h2>
       <div class="crossword-card">
         <img class="corner corner-tl" src="cat-corner.svg" alt="" aria-hidden="true" />
         <img class="corner corner-tr" src="cat-corner.svg" alt="" aria-hidden="true" />
@@ -25,16 +51,25 @@
 
       <aside class="clues">
         <div>
-          <h2>Across</h2>
+          <h3>Across</h3>
           <ol id="across-clues"></ol>
         </div>
         <div>
-          <h2>Down</h2>
+          <h3>Down</h3>
           <ol id="down-clues"></ol>
         </div>
       </aside>
     </section>
   </main>
+
+  <dialog id="oops-modal">
+    <h2>achoo!! 😾</h2>
+    <p>The sneeze ruined the painting... kitty is angy. Make it up to him?</p>
+    <div class="choice-row">
+      <button id="oops-yes">yes</button>
+      <button id="oops-yes-2">OFC YES WYM NO</button>
+    </div>
+  </dialog>
 
   <dialog id="win-modal">
     <h2>Happy Valentines, cutie!!! 💘</h2>
@@ -45,4 +80,3 @@
   <script src="script.js"></script>
 </body>
 </html>
-
